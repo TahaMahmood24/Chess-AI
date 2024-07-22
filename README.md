@@ -6,11 +6,12 @@ Engineered a chess AI utilizing Deep Q-Learning Network (DQN) and Reinforcement 
 
 - [Introduction](#introduction)
 - [Files](#files)
-  - [main.py](#1-mainpy)
-  - [chess_board.py](#2-chess_boardpy)
-  - [chess_learn.py](#3-chess_learnpy)
-  - [dqn.py](#4-dqnpy)
-  - [replaymemory.py](#5-replaymemorypy)
+  - [train.py](#1-trainpy)
+  - [test.py](#2-testpy)
+  - [chess_board.py](#3-chess_boardpy)
+  - [chess_learn.py](#4-chess_learnpy)
+  - [dqn.py](#5-dqnpy)
+  - [replaymemory.py](#6-replaymemorypy)
 - [Deep Q-Network (DQN)](#deep-q-network-dqn)
 - [Stockfish Integration](#stockfish-integration)
 - [Usage Example](#usage-example)
@@ -26,23 +27,27 @@ This project implements a Deep Q-Network (DQN) to play chess using the Stockfish
 
 ## Files
 
-### 1. `main.py`
+### 1. `train.py`
 
-This is the main module is to train and test a chess learning model.
+This is the main module to train a chess learning model.
 
-### 2. `chess_board.py`
+### 2. `test.py`
+
+This is the main module to test a chess learning model.
+
+### 3. `chess_board.py`
 
 This module provides a class `chess_board` for managing a chess game, including initializing the board, handling moves, encoding the board state, and integrating with the Stockfish chess engine.
 
-### 3. `chess_learn.py`
+### 4. `chess_learn.py`
 
 This module provides a class `Chess_Learn` for training a Deep Q-Network (DQN) agent to play chess using the Stockfish engine as an opponent.
 
-### 4. `dqn.py`
+### 5. `dqn.py`
 
 This module provides the DQN class, which defines the architecture of a neural network used for Deep Q-Learning.
 
-### 5. `replaymemory.py`
+### 6. `replaymemory.py`
 
 This module provides the ReplayMemory class for storing and sampling transitions in a deque.
 
@@ -100,7 +105,4 @@ To test the trained agent, run the testing script:
 
 ```bash
 python test.py
-```
-
-This script loads the trained DQN model and plays a series of games against Stockfish to evaluate the agent's performance.
 ```
