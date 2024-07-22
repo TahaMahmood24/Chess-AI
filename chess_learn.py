@@ -243,11 +243,11 @@ class Chess_Learn:
     def get_piece_color(self, piece):
         return 'White' if piece else 'Black'
 
-    def save_image_files(self, svg_data, piece, move, mode='train'):
+    def save_image_files(self, svg_data, match, piece, move, mode='train'):
         nextIdx = self.findNextIdx(mode)
         
         # Create directory if it does not exist
-        directory = f"{mode}_data/images/match{nextIdx}"
+        directory = f"{mode}_data/images/match{match}"
         os.makedirs(directory, exist_ok=True)
         piece_color = self.get_piece_color(piece)
         
@@ -337,17 +337,21 @@ class Chess_Learn:
                     reward_list.append(reward)
                     step_list.append(step_count)
                     self.save_position_files(position_list, 'train')
+                    self.image = state.print_board_image(simulate=simulate)
+                    self.save_image_files(self.image, match+1, turn[0], step_count, mode='train')
                     print(f"Checkmate has occurred after {step_count} moves. Winner is {win}")
             
                 position_list.append(state.FEN)
                 self.image = state.print_board_image(simulate=simulate)
-                self.save_image_files(self.image, turn[0], step_count, mode='train')
+                self.save_image_files(self.image, match+1, turn[0], step_count, mode='train')
                 state = new_state   
                 step_count += 1
 
                 if step_count == self.max_steps:
                     print(f"Max Steps of {self.max_steps} reached")
                     self.save_position_files(position_list, 'train')
+                    self.image = state.print_board_image(simulate=simulate)
+                    self.save_image_files(self.image, match+1, turn[0], step_count, mode='train')
                     reward_list.append(reward)                
 
             # Train the network if enough experience has been collected
@@ -433,7 +437,7 @@ class Chess_Learn:
 
                 position_list.append(state.FEN)
                 self.image = state.print_board_image(simulate=simulate)
-                self.save_image_files(self.image, turn[0], step_count, mode='test')
+                self.save_image_files(self.image, match+1, turn[0], step_count, mode='test')
                 state = new_state   
                 step_count += 1
 
@@ -442,7 +446,7 @@ class Chess_Learn:
                     step_list.append(step_count)
                     position_list.append(state.FEN)
                     self.image = state.print_board_image(simulate=simulate)
-                    self.save_image_files(self.image, turn[0], step_count, mode='test')
+                    self.save_image_files(self.image, match+1, turn[0], step_count, mode='test')
                     self.save_position_files(position_list, 'test')
                     print(f"Checkmate has occurred after {step_count} moves. Winner is {win}")
 
@@ -451,7 +455,7 @@ class Chess_Learn:
                     step_list.append(step_count)
                     position_list.append(state.FEN)
                     self.image = state.print_board_image(simulate=simulate)
-                    self.save_image_files(self.image, turn[0], step_count, mode='test')
+                    self.save_image_files(self.image, match+1, turn[0], step_count, mode='test')
                     self.save_position_files(position_list, 'test')
                     print(f"Max Steps of {self.max_steps} reached")
 

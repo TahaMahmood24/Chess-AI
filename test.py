@@ -15,6 +15,9 @@ Functions:
 Example:
     python test.py
 """
+
+from chess_learn import Chess_Learn
+
 import argparse
 from chess_learn import Chess_Learn
 
