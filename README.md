@@ -115,4 +115,11 @@ python test.py --matches <number_of_matches> --opponent_elo <opponent_elo> --dep
 - `--simulate`: Run in simulation mode (default: False). Use this flag to enable simulation mode.
 
 This script initializes the `Chess_Learn` class and starts the testing process for the specified number of matches, with the given opponent Elo rating, search depth, and simulation mode if enabled. The performance of the agent during testing will be reported based on the provided parameters.
+
+## Example Output:
+
+- For each match, plots will be generated and saved in the `test_data/images/match{match_number}` directory. Each image showcases the moves made during that match.
+- After completing all the matches, a summary report will be generated, including:
+  - The final Elo score based on the opponent's rating and the results of the matches.
+  - The number of matches won, tied, and lost.
 ```
