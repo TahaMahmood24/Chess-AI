@@ -101,8 +101,18 @@ This script initializes the `Chess_Learn` class, sets up the DQN models, and sta
 
 ### Testing
 
-To test the trained agent, run the testing script:
+To test the trained DQN agent, use the following script:
 
 ```bash
-python test.py
+python test.py --matches <number_of_matches> --opponent_elo <opponent_elo> --depth <depth> --simulate
+```
+
+#### Arguments:
+
+- `--matches`: Number of matches to play (default: 2).
+- `--opponent_elo`: Elo rating of the opponent (default: 400).
+- `--depth`: Search depth for the Stockfish engine (default: 3).
+- `--simulate`: Run in simulation mode (default: False). Use this flag to enable simulation mode.
+
+This script initializes the `Chess_Learn` class and starts the testing process for the specified number of matches, with the given opponent Elo rating, search depth, and simulation mode if enabled. The performance of the agent during testing will be reported based on the provided parameters.
 ```
