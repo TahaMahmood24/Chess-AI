@@ -122,4 +122,3 @@ This script initializes the `Chess_Learn` class and starts the testing process f
 - After completing all the matches, a summary report will be generated, including:
   - The final Elo score based on the opponent's rating and the results of the matches.
   - The number of matches won, tied, and lost.
-```
