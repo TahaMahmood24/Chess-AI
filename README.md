@@ -120,5 +120,37 @@ This script initializes the `Chess_Learn` class and starts the testing process f
 
 - For each match, plots will be generated and saved in the `test_data/images/match{match_number}` directory. Each image showcases the moves made during that match.
 - After completing all the matches, a summary report will be generated, including:
-  - The final Elo score based on the opponent's rating and the results of the matches.
+  - The final Elo score, calculated using the following logic:
+
+    ```python
+    def calculate_elo(self, opponent_elo, reward_list, initial_elo=0, K=32):
+        """
+        Calculate the new Elo rating after a series of matches against a single opponent.
+
+        :param initial_elo: Initial Elo rating of the player.
+        :param opponent_elo: Elo rating of the opponent.
+        :param reward_list: List of match outcomes (1 for win, 0 for tie, -1 for loss).
+        :param K: K-factor in Elo rating formula, default is 32.
+        :return: New Elo rating of the player.
+        """
+        current_elo = initial_elo
+
+        for reward in reward_list:
+            # Determine the actual score S
+            if reward == 1:
+                S = 1
+            elif reward == 0:
+                S = 0.5
+            elif reward == -1:
+                S = 0
+            
+            # Calculate the expected score E
+            E = 1 / (1 + 10 ** ((opponent_elo - current_elo) / 400))
+            
+            # Update the current Elo rating
+            current_elo += K * (S - E)
+
+        return current_elo
+    ```
+
   - The number of matches won, tied, and lost.
