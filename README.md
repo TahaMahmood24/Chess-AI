@@ -94,8 +94,13 @@ Stockfish is a powerful open-source chess engine used as an opponent to train th
 To train the DQN agent, run the training script:
 
 ```bash
-python train.py
+python train.py --matches <number_of_matches> --simulate
 ```
+
+#### Arguments:
+
+- `--matches`: Number of matches to play (default: 2).
+- `--simulate`: Run in simulation mode (default: False). Use this flag to enable simulation mode.
 
 This script initializes the `Chess_Learn` class, sets up the DQN models, and starts the training loop. The progress, including rewards and Elo ratings, will be plotted and saved.
 
