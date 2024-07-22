@@ -14,7 +14,6 @@ Engineered a chess AI utilizing Deep Q-Learning Network (DQN) and Reinforcement 
   - [replaymemory.py](#6-replaymemorypy)
 - [Deep Q-Network (DQN)](#deep-q-network-dqn)
 - [Stockfish Integration](#stockfish-integration)
-- [Usage Example](#usage-example)
 - [Requirements](#requirements)
 - [Installation](#installation)
 - [Training and Testing](#training-and-testing)
