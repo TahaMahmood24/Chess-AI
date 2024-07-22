@@ -1,3 +1,56 @@
+"""
+chess_board.py
+
+This module provides a class `chess_board` for managing a chess game, including initializing the board, 
+handling moves, encoding the board state, and integrating with the Stockfish chess engine.
+
+Classes:
+    chess_board: A class to represent and manage a chess game.
+
+Methods:
+    __init__(self, FEN="rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1"):
+        Initializes the chess board with a given FEN string and sets up various attributes.
+
+    reset(self):
+        Resets the board to the initial state.
+
+    print_board(self):
+        Returns the current board state.
+
+    init_action_space(self):
+        Initializes the action space for the chess board.
+
+    check_turn(self):
+        Determines whose turn it is to move.
+
+    encode_fen(self):
+        Encodes the FEN string into a layer board representation.
+
+    encode_legal_moves(self):
+        Encodes the legal moves of the current board state.
+
+    make_random_move(self):
+        Makes a random legal move on the board.
+
+    step(self, action):
+        Executes a move on the board and returns the new state, reward, checkmate status, and the player who checkmated.
+
+    stockfish_move(self, elo_rating=10, depth=3):
+        Uses the Stockfish engine to get the best move.
+
+    print_board_image(self, size=400, filename='board_image.png', simulate=False):
+        Generates and optionally displays an SVG image of the board.
+
+    is_valid_fen(self):
+        Checks if the current FEN string is valid.
+
+    decode_square(self, num):
+        Decodes a square number into a chess notation square.
+
+    decode_move(self, tensor):
+        Decodes a move from a tensor representation into a chess.Move object.
+"""
+
 import chess
 import chess.svg
 import numpy as np

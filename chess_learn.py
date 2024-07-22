@@ -1,3 +1,54 @@
+"""
+chess_learn.py
+
+This module provides a class `Chess_Learn` for training a Deep Q-Network (DQN) agent to play chess using the Stockfish engine 
+as an opponent. The module includes various hyperparameters, methods for training, saving, and testing the DQN model, 
+and utilities for handling chess matches and calculating Elo ratings.
+
+Classes:
+    Chess_Learn: A class to handle the learning process for a chess-playing DQN agent.
+
+Methods:
+    __init__(self):
+        Initializes the Chess_Learn class, sets up the device for computation, and initializes the Stockfish engine.
+
+    y(x, max_steps):
+        A static method that calculates a value based on an exponential function.
+
+    match_outcome_counts(self, reward_list):
+        Counts and returns the number of wins, losses, and ties from a list of rewards.
+
+    save_position_files(self, position_list, mode='train'):
+        Saves the positions of a chess game to a text file.
+
+    save_image_files(self, image, turn, step, mode='train'):
+        Saves the image of a chess board at a particular step to a file.
+
+    plot_progress(self, step_list, reward_list, new_elo_list):
+        Plots the training progress, including steps, rewards, and Elo ratings.
+
+    calculate_elo(self, opponent_elo, reward_list):
+        Calculates the new Elo rating based on the match outcomes against an opponent.
+
+    set_optimizer(self, policy_dqn):
+        Sets the optimizer for the DQN model.
+
+    configure_and_get_random_top_move(self, opponent_elo, depth, FEN):
+        Configures the Stockfish engine and gets the best move from its top recommendations.
+
+    save_model(self, policy_dqn, target_dqn, replay_memory, file_name='best_policy_dqn'):
+        Saves the model and replay memory to a file.
+
+    load_model(self, policy_dqn, target_dqn, replay_memory, file_name='best_policy_dqn'):
+        Loads the model and replay memory from a file.
+
+    learn(self, policy_dqn, target_dqn):
+        The main training loop for the DQN agent.
+
+    test(self, policy_dqn, simulate=True, opponent_elo=1350, depth=10):
+        Tests the DQN agent against the Stockfish engine.
+"""
+
 import chess
 import chess.svg
 import numpy as np
